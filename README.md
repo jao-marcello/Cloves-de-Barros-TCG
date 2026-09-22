@@ -67,4 +67,5 @@ Este repositório contém a documentação estruturada e o planejamento de um jo
 * [Visualizar Fluxogramas das Partes Críticas (Google Drive)](https://drive.google.com/file/d/1PugklSGKmy5OlNvW5HmlfayyWq9a1K7p/view?usp=sharing)
 
 ![Fluxo de Gameplay: Mapa](./DiagramasTGC/Fluxograma%20do%20mapa.png)
+
 ![Fluxo de Gameplay: Batalha](./DiagramasTGC/Fluxograma%20das%20batalhas.png)
