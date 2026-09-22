@@ -37,7 +37,8 @@ Este repositório contém a documentação estruturada e o planejamento de um jo
 * **Interesses:** Jogos de cartas estratégicos e obras artísticas/literárias inspiradas no universo de H.P. Lovecraft.
 
 ### 2.2 - Jornada do Usuário
-![diagrama da jornada do Usurio](/DiagramasTGC/JornadaDeUsuario)
+![diagrama da jornada do Usurio](./DiagramasTGC/JornadaDeUsuario.jpeg)
+
 ### 2.3 - Requisitos Funcionais e Não Funcionais
 
 #### 2.3.1 - Requisitos Funcionais
@@ -49,7 +50,7 @@ Este repositório contém a documentação estruturada e o planejamento de um jo
 * Duração das partidas limitada a no máximo 20 minutos.
 
 ### 2.4 - Modelagem de Casos de Uso
-*(Etapa reservada para os diagramas e especificações de casos de uso do sistema).*
+![Diagrama de casos de uso](./DiagramasTGC/CasoDeUso.jpeg)
 
 ---
 
@@ -64,3 +65,6 @@ Este repositório contém a documentação estruturada e o planejamento de um jo
 
 ### 3.3 - Fluxograma e Diagramas de Atividades
 * [Visualizar Fluxogramas das Partes Críticas (Google Drive)](https://drive.google.com/file/d/1PugklSGKmy5OlNvW5HmlfayyWq9a1K7p/view?usp=sharing)
+
+![Fluxo de Gameplay: Mapa](./DiagramasTGC/Fluxograma%20do%20mapa.png)
+![Fluxo de Gameplay: Batalha](./DiagramasTGC/Fluxograma%20das%20batalhas.png)
