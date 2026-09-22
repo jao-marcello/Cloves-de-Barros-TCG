@@ -61,7 +61,7 @@ Este repositório contém a documentação estruturada e o planejamento de um jo
 * **3.1.2 - Fazer Diagrama:** *(Pendente)*
 
 ### 3.2 - Diagrama de Classes
-* [Visualizar Diagrama de Classes (Google Drive)](https://drive.google.com/file/d/1LrFsOehB8JmWbSM4lk3H-go3I-Y559Jp/view?usp=sharing)
+![Diagrama de Classes:](./DiagramasTGC/Diagrama%20de%20Classes.png)
 
 ### 3.3 - Fluxograma e Diagramas de Atividades
 * [Visualizar Fluxogramas das Partes Críticas (Google Drive)](https://drive.google.com/file/d/1PugklSGKmy5OlNvW5HmlfayyWq9a1K7p/view?usp=sharing)
