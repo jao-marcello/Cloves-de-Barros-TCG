@@ -180,3 +180,40 @@ A modelagem orientada a objetos orienta-se em torno das seguintes classes e estr
 ![Fluxo de Gameplay: Mapa](./DiagramasTGC/Fluxograma%20do%20mapa.png)
 
 ![Fluxo de Gameplay: Batalha](./DiagramasTGC/Fluxograma%20das%20batalhas.png)
+
+## 4 - Análise de mercado e prototipação
+
+### 4.1 - Canvas do projeto
+
+https://docs.google.com/presentation/d/1jJEHdUPtM8t6G_P68a-VWNGFCHWJyO9Q/edit?usp=sharing&ouid=106762526168710693673&rtpof=true&sd=true
+
+### 4.2 - Matriz Sw2h
+
+https://docs.google.com/spreadsheets/d/1sSi7lTZR1olC8VpbyIxTk0xA6zX5aWCLdWdl_wd1NJQ/edit?usp=sharing
+
+### 4.3 - Análise de risco
+
+https://docs.google.com/spreadsheets/d/1EJ3GIUGR3uy74NiZqVAJBsXIUmUhU0XWlCSVxX45nGU/edit?usp=sharing
+
+### 4.4 - Prototipo
+
+https://www.figma.com/proto/IYvZGRu2LwQfJEHItbg98L/Prototype-Old-Codex?node-id=3-3&t=Bih5hHm6A68rzA1b-1
+
+### 4.5: Areas da TI envolvidas 
+
+- Desenvolvimento de jogos;
+- Engenharia e arquitetura de Software;
+- Modelagem de sistema;
+- UX/UI;
+- Banco de dados;
+- Desenvolvimento mobile;
+- Algoritmos;
+- Teste de software;
+
+### 4.6: Pitch
+- Problema
+- mercado/interessados
+- Solucao
+- Diferencial
+
+https://docs.google.com/presentation/d/1aJvNADIyaCVOLhHqk2rMWiYAyZE3KWxko0lvpyVWjh0/edit?usp=sharing
