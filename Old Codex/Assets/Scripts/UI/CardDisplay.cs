@@ -7,8 +7,10 @@ public class CardDisplay : MonoBehaviour
     [Header("Referências da UI")]
     public TextMeshProUGUI nomeText;
     public TextMeshProUGUI descricaoText;
-    public TextMeshProUGUI custoText;
-    public TextMeshProUGUI valorText;
+    public TextMeshProUGUI custoManaText; // Atualizado
+    public TextMeshProUGUI custoSangueText; // Atualizado
+    public TextMeshProUGUI ataqueText; // Novo (antigo valorText)
+    public TextMeshProUGUI vidaText; // Novo
     public Image arteImage;
 
     [Header("Dados da Carta")]
@@ -26,15 +28,16 @@ public class CardDisplay : MonoBehaviour
     {
         nomeText.text = cartaDados.nome;
         descricaoText.text = cartaDados.descricao;
-        custoText.text = cartaDados.custo.ToString();
-        valorText.text = cartaDados.valorEfeito.ToString();
+        
+        // Lendo os novos dados do CartaSO atualizado
+        custoManaText.text = cartaDados.custoMana.ToString();
+        custoSangueText.text = cartaDados.custoSangue.ToString();
+        ataqueText.text = cartaDados.atPoints.ToString();
+        vidaText.text = cartaDados.lfPoints.ToString();
+        
         arteImage.sprite = cartaDados.arte;
-
-        // Opcional: Mudar cor baseada no tipo de efeito
-        // Ex: Vermelho para Ataque, Azul para Defesa
     }
 
-    // Método para carregar uma nova carta dinamicamente
     public void CarregarCarta(CartaSO novaCarta)
     {
         cartaDados = novaCarta;

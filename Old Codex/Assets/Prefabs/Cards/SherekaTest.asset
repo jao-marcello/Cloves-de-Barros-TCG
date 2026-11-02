@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eaac6f10779138f49b239b6ee45e52ca, type: 3}
-  m_Name: Shrek
+  m_Name: SherekaTest
   m_EditorClassIdentifier: Assembly-CSharp::CartaSO
-  idCarta: 
-  nome: 
-  descricao: 
-  arte: {fileID: 0}
-  custo: 0
-  valorEfeito: 0
-  tipoEfeito: 0
-  nivelEvolucao: 1
+  idCarta: 0000
+  nome: Shereka
+  descricao: "\xE9 oshereka teste"
+  arte: {fileID: 1321534072604516779, guid: 817189b17baee8547a1e2464da178fde, type: 3}
+  custoMana: 0
+  custoSangue: 9
+  atPoints: 9
+  lfPoints: 9
+  isSpecial: 0
+  levelInvoc: 0
+  levelEvolution: 0
+  specialization: 
