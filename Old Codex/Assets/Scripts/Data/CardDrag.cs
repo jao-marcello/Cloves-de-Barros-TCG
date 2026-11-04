@@ -21,17 +21,17 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         posicaoInicial = rectTransform.position;
         parentOriginal = transform.parent;
-        
+
         transform.SetParent(canvasPrincipal.transform);
-        transform.SetAsLastSibling(); 
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(
-            canvasPrincipal.GetComponent<RectTransform>(), 
-            eventData.position, 
-            eventData.pressEventCamera, 
+            canvasPrincipal.GetComponent<RectTransform>(),
+            eventData.position,
+            eventData.pressEventCamera,
             out Vector3 posicaoGlobal))
         {
             rectTransform.position = posicaoGlobal;
@@ -45,31 +45,31 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Slot")))
         {
-            // 1. Acessa o script do Slot que o raio atingiu
-            SlotMesa slot = hit.collider.GetComponent<SlotMesa>();
+            // 1. Acessa o script do Slot usando o novo nome (BoardSlot)
+            BoardSlot slot = hit.collider.GetComponent<BoardSlot>();
 
-            // 2. Verifica se o slot existe e se está livre
-            if (slot != null && !slot.estaOcupado)
+            // 2. Verifica se o slot existe e se está livre usando a nova variável (isOccupied)
+            if (slot != null && !slot.isOccupied && slot.isPlayerSlot)
             {
                 Vector3 posicaoSpawn = hit.collider.transform.position + new Vector3(0, 0.1f, 0);
 
                 // 3. Instancia a carta 3D
                 GameObject cartaNaMesa = Instantiate(prefabCartaMesa, posicaoSpawn, hit.collider.transform.rotation);
 
-                // 4. Transfere os dados (CartaSO) da carta da mão para a carta da mesa
+                // 4. Transfere os dados
                 CardDisplay displayMao = GetComponent<CardDisplay>();
                 CardDisplay displayMesa = cartaNaMesa.GetComponentInChildren<CardDisplay>();
-                
+
                 if (displayMao != null && displayMesa != null)
                 {
                     displayMesa.CarregarCarta(displayMao.cartaDados);
                 }
 
-                // 5. Avisa ao slot que ele agora está ocupado
-                slot.OcuparSlot(cartaNaMesa);
+                // 5. Avisa ao slot que ele agora está ocupado usando o novo método (OccupySlot)
+                slot.OccupySlot(cartaNaMesa);
 
                 // 6. Desativa a carta da mão
-                gameObject.SetActive(false); 
+                gameObject.SetActive(false);
             }
             else
             {

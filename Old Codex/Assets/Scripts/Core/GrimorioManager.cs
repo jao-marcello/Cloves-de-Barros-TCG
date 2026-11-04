@@ -3,19 +3,43 @@ using UnityEngine;
 
 public class GrimorioManager : MonoBehaviour
 {
+    [Header("Configuração da Classe")]
+    public DeckClassSO classeDoJogador; // O arquivo da classe (Ex: Classe_MagoDeSangue)
+
     [Header("Listas de Cartas")]
-    public List<CartaSO> deckDeBatalha; // As cartas que você trouxe para a Jornada
-    public List<CartaSO> maoAtual;      // As cartas que estão na sua mão agora
-    public List<CartaSO> descarte;      // Cartas usadas ou sacrificadas
+    public List<CartaSO> deckDeBatalha; // Começa vazia no Inspector
+    public List<CartaSO> maoAtual;      
+    public List<CartaSO> descarte;      
 
     [Header("Interface do Livro")]
-    public Transform localDasPaginas;   // Onde os prefabs 2D serão gerados na UI
-    public GameObject prefabPagina2D;   // O seu Card_Prefab da mão
+    public Transform localDasPaginas;   
+    public GameObject prefabPagina2D;   
 
     void Start()
     {
-        // Embaralha o deck no início da partida (lógica de embaralhar omitida para simplificar)
-        ComprarCartasIniciais(3); // Compra 3 cartas no turno 1
+        // 1. O jogo pega as cartas do arquivo de Classe e joga pro seu baralho ativo
+        if (classeDoJogador != null)
+        {
+            deckDeBatalha = new List<CartaSO>(classeDoJogador.classCards); // ou cartasDaClasse
+        }
+
+        // 2. Embaralha as cartas e depois compra 3 iniciais
+        EmbaralharDeck();
+        ComprarCartasIniciais(3);
+    }
+
+    // ==========================================
+    // MÉTODO FALTANDO QUE CAUSAVA O ERRO:
+    // ==========================================
+    public void EmbaralharDeck()
+    {
+        for (int i = 0; i < deckDeBatalha.Count; i++)
+        {
+            CartaSO temp = deckDeBatalha[i];
+            int randomIndex = Random.Range(i, deckDeBatalha.Count);
+            deckDeBatalha[i] = deckDeBatalha[randomIndex];
+            deckDeBatalha[randomIndex] = temp;
+        }
     }
 
     // Chamado na "Fase de Compra" do seu fluxograma
@@ -25,24 +49,31 @@ public class GrimorioManager : MonoBehaviour
         {
             if (deckDeBatalha.Count > 0)
             {
-                // 1. Tira a carta do topo do deck
+                // Como o deck já foi embaralhado, pegamos sempre a carta do topo (posição 0)
                 CartaSO cartaComprada = deckDeBatalha[0];
+
+                // Remove a carta do topo do baralho
                 deckDeBatalha.RemoveAt(0);
 
-                // 2. Adiciona na lista da mão
+                // Adiciona na mão e renderiza a página
                 maoAtual.Add(cartaComprada);
-
-                // 3. Cria a página (Visual) no Livro
                 AdicionarPaginaNoLivro(cartaComprada);
             }
         }
+    }
+
+    // Método público para ser conectado a um botão na Unity
+    public void BotaoComprarUmaCarta()
+    {
+        // Chama a função de compra pedindo 1 carta
+        ComprarCartasIniciais(1);
     }
 
     private void AdicionarPaginaNoLivro(CartaSO dadosDaCarta)
     {
         // Instancia o prefab da carta 2D dentro do Canvas da Mão
         GameObject novaPagina = Instantiate(prefabPagina2D, localDasPaginas);
-        
+
         // Passa os dados para o visual
         CardDisplay display = novaPagina.GetComponent<CardDisplay>();
         if (display != null)

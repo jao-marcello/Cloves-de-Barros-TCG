@@ -1,0 +1,1 @@
+C:\Projetos\Cloves-de-Barros-TCG\Old Codex\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\6v3p2022\obj\arm64-v8a

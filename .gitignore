@@ -10,6 +10,7 @@
 [Mm]emoryCaptures/
 [Uu]nityGenerated/
 UserSettings/
+*.symbols.zip
 
 # Visual Studio / vscode
 .vs/

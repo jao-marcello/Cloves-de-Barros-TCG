@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaac6f10779138f49b239b6ee45e52ca, type: 3}
+  m_Name: Trigue
+  m_EditorClassIdentifier: Assembly-CSharp::CartaSO
+  idCarta: 0004
+  nome: Trigue
+  descricao: Alisa meu pelo
+  arte: {fileID: -8283285396656723921, guid: 742e13c2368363d43a20082f99644ad7, type: 3}
+  custoMana: 0
+  custoSangue: 2
+  atPoints: 1
+  lfPoints: 4
+  isSpecial: 0
+  levelInvoc: 0
+  levelEvolution: 0
+  specialization: 

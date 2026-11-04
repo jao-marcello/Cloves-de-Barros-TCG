@@ -222,7 +222,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1159835848902110254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,6 +937,7 @@ GameObject:
   - component: {fileID: 7280378360469074559}
   - component: {fileID: 8122517749140578705}
   - component: {fileID: 3620039441066990147}
+  - component: {fileID: 1914023244220893017}
   m_Layer: 0
   m_Name: Card_Prefab (1)
   m_TagString: Untagged
@@ -1028,6 +1029,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1914023244220893017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224523693868324679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9daa1e4ead1e5ea45b243cfaecf6355b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CardBattler
+  baseData: {fileID: 0}
+  currentHealth: 0
+  currentAttack: 0
+  activeAbilities: 
 --- !u!1 &8440954268606209888
 GameObject:
   m_ObjectHideFlags: 0

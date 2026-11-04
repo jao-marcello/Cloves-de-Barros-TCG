@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "NovaCarta", menuName = "TGC/Carta")]
 public class CartaSO : ScriptableObject
@@ -23,4 +24,7 @@ public class CartaSO : ScriptableObject
     public int levelInvoc; // 1 a 10[cite: 2]
     public int levelEvolution; // 1 a 5[cite: 2]
     public string specialization; // Opcional[cite: 2]
+
+    [Header("Habilidades Especiais")]
+    public List<CardAbility> abilities;
 }
