@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaac6f10779138f49b239b6ee45e52ca, type: 3}
+  m_Name: SeEFoda
+  m_EditorClassIdentifier: Assembly-CSharp::CartaSO
+  idCarta: 0006
+  nome: "Se \xE9 Foda"
+  descricao: foda demias
+  arte: {fileID: -5902958660877746689, guid: 91fd61c2c68100441bc2f159ac09b6c9, type: 3}
+  custoMana: 0
+  custoSangue: 0
+  atPoints: 1
+  lfPoints: 6
+  isSpecial: 0
+  levelInvoc: 0
+  levelEvolution: 0
+  specialization: 
+  abilities: 

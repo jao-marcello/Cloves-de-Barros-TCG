@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaac6f10779138f49b239b6ee45e52ca, type: 3}
+  m_Name: JuninhoRuindadePura
+  m_EditorClassIdentifier: Assembly-CSharp::CartaSO
+  idCarta: 0005
+  nome: Juninho
+  descricao: Ruindade Pura
+  arte: {fileID: 687820239419229485, guid: 245bc8cc61c24384d862be4003372548, type: 3}
+  custoMana: 0
+  custoSangue: 0
+  atPoints: 2
+  lfPoints: 5
+  isSpecial: 0
+  levelInvoc: 0
+  levelEvolution: 0
+  specialization: 
+  abilities: 

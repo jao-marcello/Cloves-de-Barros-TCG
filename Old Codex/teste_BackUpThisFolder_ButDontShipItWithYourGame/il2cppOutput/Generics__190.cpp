@@ -6664,7 +6664,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Task_1_tDF1FF540D7D2248A08580387A39717B7FB7A9
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 85474
+// Method Definition Index: 85480
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WebshopException_1__ctor_m15D10E100446CBCA74FA8AB76EA5DA2FAF3C0CC5_gshared (WebshopException_1_t46F8BF5ED1F3771B4F0CBB70C84F5A8689781045* __this, String_t* ___0_message, Il2CppSharedGenericObject* ___1_innerError, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -6685,7 +6685,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WebshopException_1__ctor_m15D10E100446CB
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 85474
+// Method Definition Index: 85480
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WebshopException_1__ctor_m5DA0460B485D8D36E0B8DFFBCF59256C90B1EFB9_fshared (WebshopException_1_tA070AE95C9824CFB813D308F8575A083D624F88A* __this, String_t* ___0_message, Il2CppFullySharedGenericAny ___1_innerError, const RuntimeMethod* method) 
 {
 	const uint32_t SizeOf_T_t41134221B6EEF405D54A1E14431AA57B321F1A0B = il2cpp_codegen_sizeof(il2cpp_rgctx_data(il2cpp_codegen_method_rgctx(method), 0));

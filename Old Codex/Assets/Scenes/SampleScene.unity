@@ -1621,7 +1621,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: B.Enemy
+  m_text: 'B.Player
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2828,6 +2830,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d88b1afc3c3a91d48ab0083896f85ddb, type: 2}
   - {fileID: 11400000, guid: 308a33e6b904fcb43a977d561f5aaf71, type: 2}
   - {fileID: 11400000, guid: 03d80729a3b058243ab5137763e4c19f, type: 2}
+  - {fileID: 11400000, guid: 2839bf579d5d6ef4ab8b99624168da3f, type: 2}
+  - {fileID: 11400000, guid: b32d987dac318f14e80ac13ae8da9fa6, type: 2}
+  - {fileID: 11400000, guid: b6319dee238eed64e927fbb8b6143d63, type: 2}
+  - {fileID: 11400000, guid: fa5e5fccbe70bf04b9b947b57881df41, type: 2}
+  - {fileID: 11400000, guid: 6791788da96d8e04c8ea1078cf45fa95, type: 2}
   maoAtual: []
   descarte: []
   localDasPaginas: {fileID: 1569234793}

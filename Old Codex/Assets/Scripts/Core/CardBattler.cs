@@ -21,7 +21,12 @@ public class CardBattler : MonoBehaviour
     public void InitializeCard(CartaSO data, BoardSlot slot)
     {
         baseData = data;
-        mySlot = slot;
+        
+        // NOVO: Trava de segurança. Só atualiza se o slot não for nulo!
+        if (slot != null)
+        {
+            mySlot = slot;
+        }
         
         if (baseData != null)
         {
@@ -80,5 +85,10 @@ public class CardBattler : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void SetSlot(BoardSlot slot)
+    {
+        mySlot = slot;
     }
 }

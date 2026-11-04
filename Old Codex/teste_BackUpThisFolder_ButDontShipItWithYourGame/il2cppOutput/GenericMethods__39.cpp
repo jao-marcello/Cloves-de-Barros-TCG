@@ -14765,7 +14765,7 @@ IL_001f:
 		return;
 	}
 }
-// Method Definition Index: 89766
+// Method Definition Index: 89772
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint8_t ProfilerUtility_GetProfilerMarkerDataType_TisInt32_t680FF22E76F6EFAD4375103CBBFFA0421349384C_mCE6A9B1FD4AEE0DDFFE0CA90A6E3A83A6479B3A7 (const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -14877,7 +14877,7 @@ IL_0052:
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_7, method);
 	}
 }
-// Method Definition Index: 89766
+// Method Definition Index: 89772
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint8_t ProfilerUtility_GetProfilerMarkerDataType_TisInt64_t092CFB123BE63C28ACDAF65C68F21A526050DBA3_mFEA9A9D2DBAF423513797DF56A48F9E1B18A9DF2 (const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -14989,7 +14989,7 @@ IL_0052:
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_7, method);
 	}
 }
-// Method Definition Index: 89766
+// Method Definition Index: 89772
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint8_t ProfilerUtility_GetProfilerMarkerDataType_TisSingle_t4530F2FF86FCB0DC29F35385CA1BD21BE294761C_m6CD1758DB1D58F231EBDACD2A74621158FF6D46C (const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -15101,7 +15101,7 @@ IL_0052:
 		IL2CPP_RAISE_MANAGED_EXCEPTION(L_7, method);
 	}
 }
-// Method Definition Index: 89766
+// Method Definition Index: 89772
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR uint8_t ProfilerUtility_GetProfilerMarkerDataType_TisIl2CppFullySharedGenericAny_m52FCF8AA54650C16BCF4EEC8F21C66757AEB72B1_fshared (const RuntimeMethod* method) 
 {
 	il2cpp_rgctx_method_init(method);
@@ -31946,7 +31946,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t UnsafeUtility_SizeOf_TisB
 		return L_0;
 	}
 }
-// Method Definition Index: 88270
+// Method Definition Index: 88276
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t UnsafeUtilityInternal_SizeOf_TisByte_t94D9231AC217BE4D2E004C4CD32DF6D099EA41A3_m485E79FA6794AD30B29C6414A85A867DF156E5E1_inline (const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31955,7 +31955,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t UnsafeUtilityInternal_Siz
 		return (int32_t)L_0;
 	}
 }
-// Method Definition Index: 88270
+// Method Definition Index: 88276
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t UnsafeUtilityInternal_SizeOf_TisBrick_tE6E9230DFDF650A631C116E79FB28F41618C3CE0_mF68A776BA23A87D0891B868D999CA75D8410EBDE_inline (const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>

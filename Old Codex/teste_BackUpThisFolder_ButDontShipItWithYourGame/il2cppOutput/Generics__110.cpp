@@ -17790,7 +17790,7 @@ IL_0027:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 84266
+// Method Definition Index: 84272
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LiveContentAdapterException_1__ctor_m8BC004B33E326B22ADC68E8E34F7B0AE415A6D84_gshared (LiveContentAdapterException_1_t8AA02AADC98773E5613B3B7E539DE870E9CBFC7A* __this, String_t* ___0_message, Il2CppSharedGenericObject* ___1_innerError, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -17811,7 +17811,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LiveContentAdapterException_1__ctor_m8BC
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 84266
+// Method Definition Index: 84272
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void LiveContentAdapterException_1__ctor_m9BA3264BD650FB1D2B59871D472DA8C2183914CE_fshared (LiveContentAdapterException_1_t530D56E86D42A9F4302BDB03027C0E5081F27B04* __this, String_t* ___0_message, Il2CppFullySharedGenericAny ___1_innerError, const RuntimeMethod* method) 
 {
 	const uint32_t SizeOf_T_t1946A679BFBC6CD36194C7F818A562C6125278D1 = il2cpp_codegen_sizeof(il2cpp_rgctx_data(il2cpp_codegen_method_rgctx(method), 0));
