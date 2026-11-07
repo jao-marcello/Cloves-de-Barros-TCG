@@ -48,10 +48,10 @@ public class CardBattler : MonoBehaviour
     {
         if (baseData == null && display != null && display.cartaDados != null)
         {
-            InitializeCard(display.cartaDados, null);
+            InitializeCard(display.cartaDados, mySlot);
         }
     }
-
+    
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
