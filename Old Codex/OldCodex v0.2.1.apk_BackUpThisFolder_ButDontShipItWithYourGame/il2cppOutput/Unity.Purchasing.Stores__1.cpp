@@ -31721,7 +31721,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* ProductDefinition_get_s
 		return L_0;
 	}
 }
-// Method Definition Index: 89056
+// Method Definition Index: 89064
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t AppleInAppPurchaseReceipt_get_productType_m5A3C2664F17A21A98B267B8E49695082148CE1E9_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31730,7 +31730,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t AppleInAppPurchaseReceipt
 		return L_0;
 	}
 }
-// Method Definition Index: 89044
+// Method Definition Index: 89052
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* AppleInAppPurchaseReceipt_get_originalTransactionIdentifier_mAEBE0C2F85BD9F5F1574D3787274BF42C0E9567F_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31739,7 +31739,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* AppleInAppPurchaseRecei
 		return L_0;
 	}
 }
-// Method Definition Index: 89042
+// Method Definition Index: 89050
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* AppleInAppPurchaseReceipt_get_transactionID_m357DBC667B344D253270FFDE0B5F11CBF6334DCA_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31992,7 +31992,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void UIFakeStoreDropdown_SetSelec
 		return;
 	}
 }
-// Method Definition Index: 84229
+// Method Definition Index: 84237
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR CoreRegistry_t7B61538793CE940CE3A391364C163F1078C9F2BA* CoreRegistry_get_Instance_m73A64BD3CB78EF5AC698D1635B5872CEB9F9AFE2_inline (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
@@ -32274,7 +32274,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* StoreOverrideMatch_get_
 		return L_0;
 	}
 }
-// Method Definition Index: 86667
+// Method Definition Index: 86675
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DownloadHandler_t1B56C7D3F65D97A1E4B566A14A1E783EA8AE4EBB* UnityWebRequest_get_downloadHandler_m1AA91B23D9D594A4F4FE2975FC356C508528F1D5_inline (UnityWebRequest_t6233B8E22992FC2364A831C1ACB033EF3260C39F* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>

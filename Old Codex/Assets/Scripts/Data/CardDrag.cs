@@ -45,41 +45,52 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
         if (Physics.Raycast(ray, out hit, 100f, LayerMask.GetMask("Slot")))
         {
-            // 1. Acessa o script do Slot usando o novo nome (BoardSlot)
             BoardSlot slot = hit.collider.GetComponent<BoardSlot>();
 
-            // 2. Verifica se o slot existe e se está livre usando a nova variável (isOccupied)
+            // Verifica se o slot existe, está livre e é do jogador
             if (slot != null && !slot.isOccupied && slot.isPlayerSlot)
             {
-                Vector3 posicaoSpawn = hit.collider.transform.position + new Vector3(0, 0.1f, 0);
-
-                // 3. Instancia a carta 3D
-                GameObject cartaNaMesa = Instantiate(prefabCartaMesa, posicaoSpawn, hit.collider.transform.rotation);
-
-                // 4. Transfere os dados
+                // NOVO: Pegamos os dados da carta da mão antes de instanciar
                 CardDisplay displayMao = GetComponent<CardDisplay>();
-                CardDisplay displayMesa = cartaNaMesa.GetComponentInChildren<CardDisplay>();
+                int custoDaCarta = displayMao.cartaDados.custoSangue;
 
-                if (displayMao != null && displayMesa != null)
+                // NOVO: Verifica se temos sangue para pagar!
+                if (BattleManager.Instance.sangueAtual >= custoDaCarta)
                 {
-                    displayMesa.CarregarCarta(displayMao.cartaDados);
+                    // Paga o custo
+                    BattleManager.Instance.GastarSangue(custoDaCarta);
+
+                    // A partir daqui, é o seu código original de invocação
+                    Vector3 posicaoSpawn = hit.collider.transform.position + new Vector3(0, 0.1f, 0);
+                    GameObject cartaNaMesa = Instantiate(prefabCartaMesa, posicaoSpawn, hit.collider.transform.rotation);
+                    CardDisplay displayMesa = cartaNaMesa.GetComponentInChildren<CardDisplay>();
+
+                    if (displayMao != null && displayMesa != null)
+                    {
+                        displayMesa.CarregarCarta(displayMao.cartaDados);
+                    }
+
+                    slot.OccupySlot(cartaNaMesa);
+                    gameObject.SetActive(false);
                 }
-
-                // 5. Avisa ao slot que ele agora está ocupado usando o novo método (OccupySlot)
-                slot.OccupySlot(cartaNaMesa);
-
-                // 6. Desativa a carta da mão
-                gameObject.SetActive(false);
+                else
+                {
+                    Debug.Log($"Sangue Insuficiente! Custa {custoDaCarta}, mas você tem {BattleManager.Instance.sangueAtual}");
+                    // Volta para a mão
+                    rectTransform.position = posicaoInicial;
+                    transform.SetParent(parentOriginal);
+                }
             }
             else
             {
-                // Se o slot estiver ocupado, volta para a mão
+                // Slot ocupado ou inválido
                 rectTransform.position = posicaoInicial;
                 transform.SetParent(parentOriginal);
             }
         }
         else
         {
+            // Soltou fora do tabuleiro
             rectTransform.position = posicaoInicial;
             transform.SetParent(parentOriginal);
         }

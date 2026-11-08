@@ -32506,7 +32506,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR Product_tD279BF775D345330FEE8405D
 		return L_0;
 	}
 }
-// Method Definition Index: 84852
+// Method Definition Index: 84860
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool WebshopLinkData_get_Live_mD4FD40AF75282FCEA0A87F27B2F1EBF9F35DF120_inline (WebshopLinkData_t6EAF30309A350DC697902EB71D290FB33E60301B* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -32515,7 +32515,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool WebshopLinkData_get_Live_mD4
 		return L_0;
 	}
 }
-// Method Definition Index: 84851
+// Method Definition Index: 84859
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* WebshopLinkData_get_Url_mC417BE91022EE2C31D2BC3520BAFCFB4925577ED_inline (WebshopLinkData_t6EAF30309A350DC697902EB71D290FB33E60301B* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>

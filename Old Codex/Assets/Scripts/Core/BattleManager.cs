@@ -1,15 +1,55 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; // Para a UI de Sangue
 
 public class BattleManager : MonoBehaviour
 {
+    // Padrão Singleton para acesso fácil de outros scripts
+    public static BattleManager Instance;
+
+    [Header("Recursos do Turno")]
+    public int sangueAtual = 0;
+    public bool modoSacrificioAtivo = false;
+    public TextMeshProUGUI textoSangueUI; // Arraste um texto da UI para cá
+
     [Header("Board Configuration")]
-    // IMPORTANTE: A ordem das listas no Inspector deve ser a mesma!
-    // O slot 0 do jogador deve estar de frente para o slot 0 do inimigo.
     public List<BoardSlot> playerSlots; 
     public List<BoardSlot> enemySlots;
 
-    // Método que vamos conectar ao nosso Botão de Teste
+    void Awake()
+    {
+        Instance = this; // Inicializa o Singleton
+    }
+
+    // --- FUNÇÕES DE RECURSOS ---
+    public void AdicionarSangue(int quantidade)
+    {
+        sangueAtual += quantidade;
+        AtualizarUI();
+    }
+
+    public void GastarSangue(int quantidade)
+    {
+        sangueAtual -= quantidade;
+        AtualizarUI();
+    }
+
+    private void AtualizarUI()
+    {
+        if (textoSangueUI != null)
+        {
+            textoSangueUI.text = "Sangue: " + sangueAtual;
+        }
+    }
+
+    // --- CONECTE ESTA FUNÇÃO AO SEU NOVO BOTÃO DE SACRIFÍCIO (A FACA) ---
+    public void ToggleModoSacrificio()
+    {
+        modoSacrificioAtivo = !modoSacrificioAtivo;
+        Debug.Log("Modo Sacrifício Ativo: " + modoSacrificioAtivo);
+        // Opcional: Aqui você pode mudar a cor do botão ou do cursor do mouse!
+    }
+
     public void TestPlayerCombat()
     {
         Debug.Log("--- INICIANDO FASE DE COMBATE DO JOGADOR ---");

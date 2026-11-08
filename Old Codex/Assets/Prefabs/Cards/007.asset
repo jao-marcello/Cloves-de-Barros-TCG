@@ -17,7 +17,7 @@ MonoBehaviour:
   descricao: "Zero Amigos, zero namoradas, 7 crian\xE7as sequestradas"
   arte: {fileID: 4307378007268850688, guid: 3196908e9bbe80a49813c0f46adbad22, type: 3}
   custoMana: 0
-  custoSangue: 0
+  custoSangue: 2
   atPoints: 7
   lfPoints: 1
   isSpecial: 0

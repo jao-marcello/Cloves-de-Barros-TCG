@@ -17,10 +17,11 @@ MonoBehaviour:
   descricao: Kaboom
   arte: {fileID: -7951423382370261559, guid: bac3260a02dcac54b89a28cc221a6702, type: 3}
   custoMana: 0
-  custoSangue: 0
+  custoSangue: 3
   atPoints: 500
   lfPoints: 1
   isSpecial: 0
   levelInvoc: 0
   levelEvolution: 0
   specialization: 
+  abilities: 

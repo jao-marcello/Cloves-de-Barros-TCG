@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dd0bbf87a92b664396fd549e3afdf17, type: 3}
   m_Name: SessaoAtualData
   m_EditorClassIdentifier: Assembly-CSharp::SessaoAtualSO
-  deckEscolhido: {fileID: 0}
+  deckEscolhido: {fileID: 11400000, guid: b529eeabb3bc4b54ea105a3a77be48db, type: 2}

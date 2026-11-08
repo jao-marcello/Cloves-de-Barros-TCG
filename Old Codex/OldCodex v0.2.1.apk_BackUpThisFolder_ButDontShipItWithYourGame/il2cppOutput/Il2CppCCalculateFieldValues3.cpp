@@ -19339,6 +19339,9 @@ struct AllocateBinsPerBatch_t5239CCD1592A1183C158D7DBFBCB38CFB8A65904_marshaled_
 };
 struct BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
+	int32_t ___sangueAtual;
+	bool ___modoSacrificioAtivo;
+	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___textoSangueUI;
 	List_1_t0E7B51994EF98BABFC40E54B91A203B7308EED99* ___playerSlots;
 	List_1_t0E7B51994EF98BABFC40E54B91A203B7308EED99* ___enemySlots;
 };
@@ -19667,15 +19670,16 @@ struct EventTrigger_tAEBFB7A16CA99343EA87722F78884BF8646BAE1B  : public MonoBeha
 };
 struct GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
-	DeckClassSO_tC0D90B4A13D40CA60EF503BB50EBD34B48F11F72* ___classeDoJogador;
+	SessaoAtualSO_t083B4510078A2CDAA94504DF1E3756076B89917E* ___sessaoAtual;
+	DeckClassSO_tC0D90B4A13D40CA60EF503BB50EBD34B48F11F72* ___deckSacrificioConfig;
 	List_1_tB1D1DA960557F9EA01BFD481438FA2DCEE3BE49D* ___deckDeBatalha;
+	List_1_tB1D1DA960557F9EA01BFD481438FA2DCEE3BE49D* ___baralhoSacrificioAtual;
 	List_1_tB1D1DA960557F9EA01BFD481438FA2DCEE3BE49D* ___maoAtual;
 	List_1_tB1D1DA960557F9EA01BFD481438FA2DCEE3BE49D* ___descarte;
 	Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* ___localDasPaginas;
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___prefabPagina2D;
-	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___contadorCartasText;
-	DeckClassSO_tC0D90B4A13D40CA60EF503BB50EBD34B48F11F72* ___grimorioSelecionado;
-	SessaoAtualSO_t083B4510078A2CDAA94504DF1E3756076B89917E* ___sessaoAtual;
+	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___contadorDeckPrincipalText;
+	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___contadorDeckSacrificioText;
 };
 struct InstanceDataSystem_tC6D72AB1BF62EAE1F6A83946CD2949D74EAC6F8F  : public RuntimeObject
 {
@@ -23404,6 +23408,10 @@ struct SpeedTreeWindGPUDataUpdater_t2375D366BA7232336438B03C945853D6E2727479_Sta
 {
 	ProfilerMarker_tA256E18DA86EDBC5528CE066FC91C96EE86501AD ___k_UpdateGPUData;
 	ProfilerMarker_tA256E18DA86EDBC5528CE066FC91C96EE86501AD ___k_UpdateSpeedTreeWindAndUploadWindParamsToGPU;
+};
+struct BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611_StaticFields
+{
+	BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611* ___Instance;
 };
 struct InstanceDataSystem_tC6D72AB1BF62EAE1F6A83946CD2949D74EAC6F8F_StaticFields
 {
@@ -29378,9 +29386,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11907[21] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11909[1] = 
 {
 	static_cast<int32_t>(offsetof(U3CPrivateImplementationDetailsU3E_t1E0B4DAEEC82B2BB143D2BF86BFF49D4AE5C9F5E_StaticFields, ___753D5E1ADA77B20B9959A1030B8E0BA5CF925F2881D3635C3F791E5A0AE0EEB1)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11911[2] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11911[6] = 
 {
-	static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___playerSlots)),static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___enemySlots)),};
+	static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611_StaticFields, ___Instance)),static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___sangueAtual)),static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___modoSacrificioAtivo)),static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___textoSangueUI)),static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___playerSlots)),static_cast<int32_t>(offsetof(BattleManager_t06A61FE1F2CFFA65BCA83410F329CC107AA36611, ___enemySlots)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11912[6] = 
 {
 	static_cast<int32_t>(sizeof(RuntimeObject)),0,0,0,0,0,};
@@ -29390,9 +29398,9 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11913[6] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11914[3] = 
 {
 	static_cast<int32_t>(offsetof(DeckSelector_tD4A27992792D54DB1F6940D0DA68CAD3E76E95EB, ___grimorioManager)),static_cast<int32_t>(offsetof(DeckSelector_tD4A27992792D54DB1F6940D0DA68CAD3E76E95EB, ___deckFogo)),static_cast<int32_t>(offsetof(DeckSelector_tD4A27992792D54DB1F6940D0DA68CAD3E76E95EB, ___deckSombrio)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11915[9] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11915[10] = 
 {
-	static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___classeDoJogador)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___deckDeBatalha)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___maoAtual)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___descarte)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___localDasPaginas)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___prefabPagina2D)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___contadorCartasText)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___grimorioSelecionado)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___sessaoAtual)),};
+	static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___sessaoAtual)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___deckSacrificioConfig)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___deckDeBatalha)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___baralhoSacrificioAtual)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___maoAtual)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___descarte)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___localDasPaginas)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___prefabPagina2D)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___contadorDeckPrincipalText)),static_cast<int32_t>(offsetof(GrimorioManager_t9A86B8548930CA73300DC5F25418E3D2B658B4D8, ___contadorDeckSacrificioText)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable11916[3] = 
 {
 	static_cast<int32_t>(offsetof(NavegadorDeCenas_t722AC1028A203B21A112F8034AFC5D25117E1F3C, ___nomeMenu)),static_cast<int32_t>(offsetof(NavegadorDeCenas_t722AC1028A203B21A112F8034AFC5D25117E1F3C, ___nomeDeck)),static_cast<int32_t>(offsetof(NavegadorDeCenas_t722AC1028A203B21A112F8034AFC5D25117E1F3C, ___nomeBatalha)),};

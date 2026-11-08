@@ -4,130 +4,176 @@ using TMPro;
 
 public class GrimorioManager : MonoBehaviour
 {
-    [Header("Configuração da Classe")]
-    public DeckClassSO classeDoJogador; // O arquivo da classe (Ex: Classe_MagoDeSangue)
+    [Header("Dados Globais")]
+    public SessaoAtualSO sessaoAtual; // O "pendrive" que vem do Menu
 
-    [Header("Listas de Cartas")]
-    public List<CartaSO> deckDeBatalha; // Começa vazia no Inspector
+    [Header("Deck de Sacrifício (Fixo)")]
+    public DeckClassSO deckSacrificioConfig; // Arraste o arquivo do Deck de Sacrifício aqui
+
+    [Header("Baralhos da Partida (Dinâmicos)")]
+    public List<CartaSO> deckDeBatalha; // Cartas principais
+    private List<CartaSO> baralhoSacrificioAtual = new List<CartaSO>(); // Cartas de sacrifício
     public List<CartaSO> maoAtual;      
     public List<CartaSO> descarte;      
 
-    [Header("Interface do Livro")]
+    [Header("Interface do Livro (Mão)")]
     public Transform localDasPaginas;   
     public GameObject prefabPagina2D;   
 
-    [Header("UI do Baralho")]
-    public TextMeshProUGUI contadorCartasText;
-
-    [Header("Deck Atual")]
-    public DeckClassSO grimorioSelecionado;
-
-    [Header("Dados Recebidos do Menu")]
-    public SessaoAtualSO sessaoAtual; // Arraste o mesmo arquivo SessaoAtualData aqui no Inspector
-
-
-    // Função que atualiza o número na tela
-    public void AtualizarContadorUI()
-    {
-        if (contadorCartasText != null)
-        {
-            contadorCartasText.text = deckDeBatalha.Count.ToString();
-        }
-    }
+    [Header("UI dos Contadores")]
+    public TextMeshProUGUI contadorDeckPrincipalText;
+    public TextMeshProUGUI contadorDeckSacrificioText;
 
     void Start()
     {
-        // Assim que a cena de batalha começa, ele verifica o que o jogador escolheu no menu
+        // Ao iniciar a batalha, puxa os dados do menu
         if (sessaoAtual != null && sessaoAtual.deckEscolhido != null)
         {
             IniciarCampanha(sessaoAtual.deckEscolhido);
         }
         else
         {
-            Debug.LogError("Nenhum deck foi recebido do Menu! Inicie o jogo pela cena do Menu Principal.");
+            Debug.LogError("Nenhum deck recebido! Inicie pela cena do Menu Principal.");
         }
     }
 
     public void IniciarCampanha(DeckClassSO deckEscolhido)
     {
-        grimorioSelecionado = deckEscolhido;
-
-        // Limpa o baralho atual (caso o jogador esteja reiniciando a campanha)
+        // 1. Prepara o Baralho Principal
         deckDeBatalha.Clear(); 
-
-        // Copia as cartas do Grimório selecionado para o baralho da partida
-        foreach (CartaSO carta in grimorioSelecionado.classCards)
+        foreach (CartaSO carta in deckEscolhido.classCards)
         {
             deckDeBatalha.Add(carta);
         }
-
-        // Embaralha as cartas (chame a sua função de embaralhar aqui)
-        EmbaralharDeck(); 
+        EmbaralharDeck(deckDeBatalha); 
         
-        // Atualiza a UI do contador que fizemos no passo anterior
-        AtualizarContadorUI();
+        GarantirCartaCustoUmNoTopo();
 
-        // Se você tiver uma função de comprar a mão inicial (ex: puxar 4 cartas), chame-a aqui:
-        ComprarCartasIniciais(4); // Exemplo: compra 4 cartas para a mão inicial
-
-        Debug.Log($"Campanha iniciada com o Grimório: {grimorioSelecionado.name}");
-    }
-        public void EmbaralharDeck()
-    {
-        for (int i = 0; i < deckDeBatalha.Count; i++)
+        // 2. Prepara o Baralho de Sacrifício
+        baralhoSacrificioAtual.Clear();
+        if (deckSacrificioConfig != null)
         {
-            CartaSO temp = deckDeBatalha[i];
-            int randomIndex = Random.Range(i, deckDeBatalha.Count);
-            deckDeBatalha[i] = deckDeBatalha[randomIndex];
-            deckDeBatalha[randomIndex] = temp;
+            foreach (CartaSO carta in deckSacrificioConfig.classCards)
+            {
+                baralhoSacrificioAtual.Add(carta);
+            }
+        }
+
+        AtualizarContadoresUI();
+
+        // Compra a mão inicial (Apenas do principal. Sacrifícios o jogador decide puxar depois)
+        ComprarCartasIniciais(3); 
+        ComprarCartaSacrificio(); // Puxa a primeira carta de sacrifício automaticamente
+        
+        Debug.Log($"Campanha iniciada com o Grimório: {deckEscolhido.name}");
+    }
+
+    // Função genérica que embaralha qualquer baralho que você mandar pra ela
+    public void EmbaralharDeck(List<CartaSO> deckParaEmbaralhar)
+    {
+        for (int i = 0; i < deckParaEmbaralhar.Count; i++)
+        {
+            CartaSO temp = deckParaEmbaralhar[i];
+            int randomIndex = Random.Range(i, deckParaEmbaralhar.Count);
+            deckParaEmbaralhar[i] = deckParaEmbaralhar[randomIndex];
+            deckParaEmbaralhar[randomIndex] = temp;
         }
     }
 
-    // Chamado na "Fase de Compra" do seu fluxograma
+    private void GarantirCartaCustoUmNoTopo()
+    {
+        // Procura uma carta que custe exatamente 1 de sangue e tenha ataque maior que 0
+        for (int i = 0; i < deckDeBatalha.Count; i++)
+        {
+            if (deckDeBatalha[i].custoSangue == 1 && deckDeBatalha[i].atPoints > 0)
+            {
+                // Salva a carta encontrada
+                CartaSO cartaIdeal = deckDeBatalha[i];
+                
+                // Remove ela da posição aleatória em que caiu
+                deckDeBatalha.RemoveAt(i);
+                
+                // Insere ela na posição 0 (o topo do baralho!)
+                deckDeBatalha.Insert(0, cartaIdeal);
+                
+                // Interrompe o loop, pois já garantimos a carta
+                return; 
+            }
+        }
+        
+        Debug.LogWarning("Nenhuma carta de custo 1 de Sangue com ataque foi encontrada neste baralho!");
+    }
+
+    public void AtualizarContadoresUI()
+    {
+        if (contadorDeckPrincipalText != null)
+            contadorDeckPrincipalText.text = "Compras: " + deckDeBatalha.Count.ToString();
+            
+        if (contadorDeckSacrificioText != null)
+            contadorDeckSacrificioText.text = "Compras: " + baralhoSacrificioAtual.Count.ToString();
+    }
+
     public void ComprarCartasIniciais(int quantidade)
     {
         for (int i = 0; i < quantidade; i++)
         {
             if (deckDeBatalha.Count > 0)
             {
-                // Como o deck já foi embaralhado, pegamos sempre a carta do topo (posição 0)
                 CartaSO cartaComprada = deckDeBatalha[0];
-
-                // Remove a carta do topo do baralho
                 deckDeBatalha.RemoveAt(0);
-
-                // Adiciona na mão e renderiza a página
-                maoAtual.Add(cartaComprada);
-                AdicionarPaginaNoLivro(cartaComprada);
-                AtualizarContadorUI();
+                AdicionarNaMao(cartaComprada);
             }
+        }
+        AtualizarContadoresUI();
+    }
+
+    // --- CONECTE ESTA FUNÇÃO NO BOTÃO DE COMPRAR CARTA DO DECK PRINCIPAL ---
+    public void ComprarCartaPrincipal()
+    {
+        if (deckDeBatalha.Count > 0)
+        {
+            CartaSO cartaComprada = deckDeBatalha[0];
+            deckDeBatalha.RemoveAt(0);
+            AdicionarNaMao(cartaComprada);
+            AtualizarContadoresUI();
+        }
+        else
+        {
+            Debug.Log("O deck principal acabou!");
         }
     }
 
-    // Método público para ser conectado a um botão na Unity
-    public void BotaoComprarUmaCarta()
+    // --- CONECTE ESTA FUNÇÃO NO BOTÃO DE COMPRAR CARTA DE SACRIFÍCIO ---
+    public void ComprarCartaSacrificio()
     {
-        // Chama a função de compra pedindo 1 carta
-        ComprarCartasIniciais(1);
+        if (baralhoSacrificioAtual.Count > 0)
+        {
+            CartaSO cartaComprada = baralhoSacrificioAtual[0];
+            baralhoSacrificioAtual.RemoveAt(0);
+            AdicionarNaMao(cartaComprada);
+            AtualizarContadoresUI();
+        }
+        else
+        {
+            Debug.Log("O deck de sacrifícios acabou!");
+        }
     }
 
-    private void AdicionarPaginaNoLivro(CartaSO dadosDaCarta)
+    // Lógica interna para renderizar a carta
+    private void AdicionarNaMao(CartaSO carta)
     {
-        // Instancia o prefab da carta 2D dentro do Canvas da Mão
+        maoAtual.Add(carta);
         GameObject novaPagina = Instantiate(prefabPagina2D, localDasPaginas);
-
-        // Passa os dados para o visual
+        
         CardDisplay display = novaPagina.GetComponent<CardDisplay>();
         if (display != null)
         {
-            display.CarregarCarta(dadosDaCarta);
+            display.CarregarCarta(carta);
         }
     }
 
-    // Função para chamar quando jogar a carta na mesa
     public void JogarCartaDaMao(CartaSO cartaJogada)
     {
         maoAtual.Remove(cartaJogada);
-        // Aqui você pode adicionar lógica de ir pro descarte, etc.
     }
 }

@@ -17,7 +17,7 @@ MonoBehaviour:
   descricao: Eu quero pagar imposto, vou pagar 2050 impostos. vou ser o recordista em pagar imposto
   arte: {fileID: -6681744145559238744, guid: 23c1a50161b786549a3d62de5a6129cd, type: 3}
   custoMana: 0
-  custoSangue: 0
+  custoSangue: 3
   atPoints: 1
   lfPoints: 13
   isSpecial: 0

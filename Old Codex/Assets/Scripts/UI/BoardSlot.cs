@@ -18,5 +18,22 @@ public class BoardSlot : MonoBehaviour
         {
             battler.SetSlot(this);
         }
+        
+    }
+
+    private void OnMouseDown()
+    {
+        // Só permite sacrifício se o botão da faca estiver ativo, se tiver carta, e se for do jogador
+        if (BattleManager.Instance.modoSacrificioAtivo && isOccupied && isPlayerSlot)
+        {
+            CardBattler battler = cardInSlot.GetComponentInChildren<CardBattler>();
+            if (battler != null)
+            {
+                battler.SerSacrificada();
+                
+                // Desliga o modo sacrifício automaticamente após 1 abate (Opcional, comente se quiser sacrificar várias seguidas)
+                BattleManager.Instance.ToggleModoSacrificio();
+            }
+        }
     }
 }

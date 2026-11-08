@@ -17,7 +17,7 @@ MonoBehaviour:
   descricao: foda demias
   arte: {fileID: -5902958660877746689, guid: 91fd61c2c68100441bc2f159ac09b6c9, type: 3}
   custoMana: 0
-  custoSangue: 0
+  custoSangue: 2
   atPoints: 1
   lfPoints: 6
   isSpecial: 0

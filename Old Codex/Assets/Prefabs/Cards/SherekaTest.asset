@@ -17,10 +17,11 @@ MonoBehaviour:
   descricao: "\xE9 oshereka teste"
   arte: {fileID: 1321534072604516779, guid: 817189b17baee8547a1e2464da178fde, type: 3}
   custoMana: 0
-  custoSangue: 9
+  custoSangue: 3
   atPoints: 9
   lfPoints: 9
   isSpecial: 0
   levelInvoc: 0
   levelEvolution: 0
   specialization: 
+  abilities: 

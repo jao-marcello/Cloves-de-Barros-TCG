@@ -74,6 +74,18 @@ public class CardBattler : MonoBehaviour
         }
     }
 
+    public void SerSacrificada()
+    {
+        Debug.Log($"{baseData.nome} foi sacrificada para os Deuses Antigos!");
+        
+        // Gera 1 de sangue para o jogador
+        BattleManager.Instance.AdicionarSangue(1); 
+        
+        // Opcional: Adicione um efeito visual de sangue/fumaça aqui futuramente
+        
+        Die(); // Reutiliza sua função de morte perfeita que já limpa o slot
+    }
+
     private void Die()
     {
         Debug.Log($"{baseData.name} morreu!");

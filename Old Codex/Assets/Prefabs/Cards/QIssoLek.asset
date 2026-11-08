@@ -17,8 +17,8 @@ MonoBehaviour:
   descricao: TMJ
   arte: {fileID: -4086144482579871880, guid: a30a449704b8438468d49616bd4909ee, type: 3}
   custoMana: 0
-  custoSangue: 0
-  atPoints: 6
+  custoSangue: 1
+  atPoints: 1
   lfPoints: 1
   isSpecial: 0
   levelInvoc: 0

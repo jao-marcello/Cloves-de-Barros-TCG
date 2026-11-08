@@ -31467,7 +31467,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t GoogleFinishTransactionEx
 		return L_0;
 	}
 }
-// Method Definition Index: 89052
+// Method Definition Index: 89060
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DateTime_t66193957C73913903DDAD89FEDC46139BCA5802D AppleInAppPurchaseReceipt_get_cancellationDate_m8D281D6DA6898DCD0A697C651E8DC5A71C75926A_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31476,7 +31476,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DateTime_t66193957C73913903DDAD89
 		return L_0;
 	}
 }
-// Method Definition Index: 89046
+// Method Definition Index: 89054
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DateTime_t66193957C73913903DDAD89FEDC46139BCA5802D AppleInAppPurchaseReceipt_get_purchaseDate_m7EAEFDFD682231B7337481FF2865F67B1D882262_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31485,7 +31485,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DateTime_t66193957C73913903DDAD89
 		return L_0;
 	}
 }
-// Method Definition Index: 89040
+// Method Definition Index: 89048
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR String_t* AppleInAppPurchaseReceipt_get_productID_m63220C43A43698508C41748AC8A8973C3A821A41_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31533,7 +31533,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR bool IntPtr_op_Inequality_m90EFC9
 		return (bool)((((int32_t)((((intptr_t)L_0) == ((intptr_t)L_1))? 1 : 0)) == ((int32_t)0))? 1 : 0);
 	}
 }
-// Method Definition Index: 89056
+// Method Definition Index: 89064
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR int32_t AppleInAppPurchaseReceipt_get_productType_m5A3C2664F17A21A98B267B8E49695082148CE1E9_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -31563,7 +31563,7 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Product_set_appleOriginalTra
 		return;
 	}
 }
-// Method Definition Index: 89050
+// Method Definition Index: 89058
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR DateTime_t66193957C73913903DDAD89FEDC46139BCA5802D AppleInAppPurchaseReceipt_get_subscriptionExpirationDate_m2CA5A6A1E85AF5E5230AA07DCB299DAE9735A621_inline (AppleInAppPurchaseReceipt_t5DC5C0301A5F1EDBAEFE3423D6909D65BE6786E1* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>

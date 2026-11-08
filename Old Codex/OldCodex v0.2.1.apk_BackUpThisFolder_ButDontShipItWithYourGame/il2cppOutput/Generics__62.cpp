@@ -16742,7 +16742,7 @@ IL_000a:
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 83710
+// Method Definition Index: 83718
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_mE4AF742351CE6B6C316B73F04D1C650968AC306D_fshared (HttpException_1_t4C7CF8B274BCF7771368AFAC3F66D8C36B699543* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -16751,7 +16751,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_mE4AF742351CE6B6C3
 		return;
 	}
 }
-// Method Definition Index: 83711
+// Method Definition Index: 83719
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m34842D957D8271F0B152F69B4A825058F1FB007F_fshared (HttpException_1_t4C7CF8B274BCF7771368AFAC3F66D8C36B699543* __this, String_t* ___0_message, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -16761,7 +16761,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m34842D957D8271F0B
 		return;
 	}
 }
-// Method Definition Index: 83712
+// Method Definition Index: 83720
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_mC67F963B9C7A72E5DA60237135C6F2001708C6D9_fshared (HttpException_1_t4C7CF8B274BCF7771368AFAC3F66D8C36B699543* __this, String_t* ___0_message, Exception_t* ___1_inner, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -16772,7 +16772,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_mC67F963B9C7A72E5D
 		return;
 	}
 }
-// Method Definition Index: 83713
+// Method Definition Index: 83721
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m2D0FD5A1E3F56C66A80AE6D18D919EF29C8E83BC_fshared (HttpException_1_t4C7CF8B274BCF7771368AFAC3F66D8C36B699543* __this, HttpClientResponse_t777FDF71630E6F4186B87D0805AE773D26979BAB* ___0_response, Il2CppFullySharedGenericAny ___1_actualError, const RuntimeMethod* method) 
 {
 	const uint32_t SizeOf_T_t4F58DF8F9C2D0ABD7FC368E67D6B00EE7617312B = il2cpp_codegen_sizeof(il2cpp_rgctx_data(il2cpp_codegen_method_rgctx(method), 0));
@@ -16870,7 +16870,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m02D55F75290DDB89B
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 84930
+// Method Definition Index: 84938
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m823DD93CF0A0D3E8343A44B5372B67207D104EAD_fshared (HttpException_1_tDFB000FFD412523C325CAB2DFF993C85865FF1CF* __this, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -16879,7 +16879,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m823DD93CF0A0D3E83
 		return;
 	}
 }
-// Method Definition Index: 84931
+// Method Definition Index: 84939
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m22A53737C7914507149A1125F597B7EB4A9587C9_fshared (HttpException_1_tDFB000FFD412523C325CAB2DFF993C85865FF1CF* __this, String_t* ___0_message, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -16889,7 +16889,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m22A53737C79145071
 		return;
 	}
 }
-// Method Definition Index: 84932
+// Method Definition Index: 84940
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m812ACCFAD22DFBD1BA44FE90EA9253D0D262455C_fshared (HttpException_1_tDFB000FFD412523C325CAB2DFF993C85865FF1CF* __this, String_t* ___0_message, Exception_t* ___1_inner, const RuntimeMethod* method) 
 {
 	//<source_info:<no-source>:1>
@@ -16900,7 +16900,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_m812ACCFAD22DFBD1B
 		return;
 	}
 }
-// Method Definition Index: 84933
+// Method Definition Index: 84941
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void HttpException_1__ctor_mEC528F95899DAB2826C0A560C2FB486B622717BC_fshared (HttpException_1_tDFB000FFD412523C325CAB2DFF993C85865FF1CF* __this, HttpClientResponse_tB55B221153CFF24475484631F49CCF88FE4A8D1E* ___0_response, Il2CppFullySharedGenericAny ___1_actualError, const RuntimeMethod* method) 
 {
 	const uint32_t SizeOf_T_tEA25425A61CB4DC91B3817A80A9FEBDD3745E542 = il2cpp_codegen_sizeof(il2cpp_rgctx_data(il2cpp_codegen_method_rgctx(method), 0));

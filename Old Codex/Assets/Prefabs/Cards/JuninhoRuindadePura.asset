@@ -17,7 +17,7 @@ MonoBehaviour:
   descricao: Ruindade Pura
   arte: {fileID: 687820239419229485, guid: 245bc8cc61c24384d862be4003372548, type: 3}
   custoMana: 0
-  custoSangue: 0
+  custoSangue: 2
   atPoints: 2
   lfPoints: 5
   isSpecial: 0
