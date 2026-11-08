@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
+
+
 
 public class EnemyManager : MonoBehaviour
 {
@@ -11,6 +14,17 @@ public class EnemyManager : MonoBehaviour
     public GameObject boardCardPrefab;   // O prefab 3D da carta na mesa
     public List<BoardSlot> enemySlots;   // Os cubos/slots que pertencem ao inimigo
 
+    [Header("UI do Baralho")]
+    public TextMeshProUGUI contadorCartasText;
+
+    public void AtualizarContadorUI()
+    {
+        if (contadorCartasText != null && currentDeck != null)
+        {
+            contadorCartasText.text = currentDeck.Count.ToString();
+        }
+    }
+
     void Start()
     {
         // Copia as cartas da Classe Base para o baralho ativo da partida
@@ -18,6 +32,7 @@ public class EnemyManager : MonoBehaviour
         {
             currentDeck = new List<CartaSO>(enemyClass.classCards);
         }
+        AtualizarContadorUI();
     }
 
     // Função chamada para o inimigo jogar uma carta aleatória
@@ -54,11 +69,15 @@ public class EnemyManager : MonoBehaviour
 
             // 6. Remove do baralho atual
             currentDeck.RemoveAt(index);
+            
+            
         }
         else
         {
             Debug.Log("Enemy tried to play, but all slots are full!");
         }
+
+        AtualizarContadorUI();
     }
 
     // Retorna o primeiro slot vazio encontrado

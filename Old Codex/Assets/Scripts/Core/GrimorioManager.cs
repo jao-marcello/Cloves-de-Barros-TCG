@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro; 
 
 public class GrimorioManager : MonoBehaviour
 {
@@ -15,6 +16,18 @@ public class GrimorioManager : MonoBehaviour
     public Transform localDasPaginas;   
     public GameObject prefabPagina2D;   
 
+    [Header("UI do Baralho")]
+    public TextMeshProUGUI contadorCartasText;
+
+    // Função que atualiza o número na tela
+    public void AtualizarContadorUI()
+    {
+        if (contadorCartasText != null)
+        {
+            contadorCartasText.text = deckDeBatalha.Count.ToString();
+        }
+    }
+
     void Start()
     {
         // 1. O jogo pega as cartas do arquivo de Classe e joga pro seu baralho ativo
@@ -26,6 +39,7 @@ public class GrimorioManager : MonoBehaviour
         // 2. Embaralha as cartas e depois compra 3 iniciais
         EmbaralharDeck();
         ComprarCartasIniciais(3);
+        AtualizarContadorUI();
     }
 
     // ==========================================
@@ -58,6 +72,7 @@ public class GrimorioManager : MonoBehaviour
                 // Adiciona na mão e renderiza a página
                 maoAtual.Add(cartaComprada);
                 AdicionarPaginaNoLivro(cartaComprada);
+                AtualizarContadorUI();
             }
         }
     }
