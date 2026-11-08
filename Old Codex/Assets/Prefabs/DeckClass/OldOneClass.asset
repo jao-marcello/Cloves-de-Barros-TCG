@@ -9,8 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65ed4978d1d50d84c89949b5617cd338, type: 3}
+  m_Script: {fileID: 11500000, guid: 249635ff9ab83e84f9dfdf196824bd36, type: 3}
   m_Name: OldOneClass
   m_EditorClassIdentifier: Assembly-CSharp::DeckClasseSO
-  nomeDaClasse: 
-  cartasDaClasse: []
+  className: OldOneClass
+  classCards:
+  - {fileID: 11400000, guid: 2f5a079a683885c4eb403946dcbf5026, type: 2}
+  - {fileID: 11400000, guid: 2f5a079a683885c4eb403946dcbf5026, type: 2}
+  - {fileID: 11400000, guid: 2f5a079a683885c4eb403946dcbf5026, type: 2}
+  - {fileID: 11400000, guid: 2f5a079a683885c4eb403946dcbf5026, type: 2}
+  - {fileID: 11400000, guid: 2f5a079a683885c4eb403946dcbf5026, type: 2}
+  - {fileID: 11400000, guid: 2f5a079a683885c4eb403946dcbf5026, type: 2}

@@ -19,6 +19,13 @@ public class GrimorioManager : MonoBehaviour
     [Header("UI do Baralho")]
     public TextMeshProUGUI contadorCartasText;
 
+    [Header("Deck Atual")]
+    public DeckClassSO grimorioSelecionado;
+
+    [Header("Dados Recebidos do Menu")]
+    public SessaoAtualSO sessaoAtual; // Arraste o mesmo arquivo SessaoAtualData aqui no Inspector
+
+
     // Função que atualiza o número na tela
     public void AtualizarContadorUI()
     {
@@ -30,22 +37,42 @@ public class GrimorioManager : MonoBehaviour
 
     void Start()
     {
-        // 1. O jogo pega as cartas do arquivo de Classe e joga pro seu baralho ativo
-        if (classeDoJogador != null)
+        // Assim que a cena de batalha começa, ele verifica o que o jogador escolheu no menu
+        if (sessaoAtual != null && sessaoAtual.deckEscolhido != null)
         {
-            deckDeBatalha = new List<CartaSO>(classeDoJogador.classCards); // ou cartasDaClasse
+            IniciarCampanha(sessaoAtual.deckEscolhido);
         }
-
-        // 2. Embaralha as cartas e depois compra 3 iniciais
-        EmbaralharDeck();
-        ComprarCartasIniciais(3);
-        AtualizarContadorUI();
+        else
+        {
+            Debug.LogError("Nenhum deck foi recebido do Menu! Inicie o jogo pela cena do Menu Principal.");
+        }
     }
 
-    // ==========================================
-    // MÉTODO FALTANDO QUE CAUSAVA O ERRO:
-    // ==========================================
-    public void EmbaralharDeck()
+    public void IniciarCampanha(DeckClassSO deckEscolhido)
+    {
+        grimorioSelecionado = deckEscolhido;
+
+        // Limpa o baralho atual (caso o jogador esteja reiniciando a campanha)
+        deckDeBatalha.Clear(); 
+
+        // Copia as cartas do Grimório selecionado para o baralho da partida
+        foreach (CartaSO carta in grimorioSelecionado.classCards)
+        {
+            deckDeBatalha.Add(carta);
+        }
+
+        // Embaralha as cartas (chame a sua função de embaralhar aqui)
+        EmbaralharDeck(); 
+        
+        // Atualiza a UI do contador que fizemos no passo anterior
+        AtualizarContadorUI();
+
+        // Se você tiver uma função de comprar a mão inicial (ex: puxar 4 cartas), chame-a aqui:
+        ComprarCartasIniciais(4); // Exemplo: compra 4 cartas para a mão inicial
+
+        Debug.Log($"Campanha iniciada com o Grimório: {grimorioSelecionado.name}");
+    }
+        public void EmbaralharDeck()
     {
         for (int i = 0; i < deckDeBatalha.Count; i++)
         {
