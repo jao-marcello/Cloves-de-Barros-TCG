@@ -40,6 +40,14 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        // SE NÃO FOR O TURNO DO JOGADOR, ELE NÃO PODE JOGAR CARTAS!
+        if (!BattleManager.Instance.turnoDoJogador)
+        {
+            rectTransform.position = posicaoInicial;
+            transform.SetParent(parentOriginal);
+            return;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
         RaycastHit hit;
 
@@ -47,24 +55,26 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         {
             BoardSlot slot = hit.collider.GetComponent<BoardSlot>();
 
-            // Verifica se o slot existe, está livre e é do jogador
             if (slot != null && !slot.isOccupied && slot.isPlayerSlot)
             {
-                // NOVO: Pegamos os dados da carta da mão antes de instanciar
                 CardDisplay displayMao = GetComponent<CardDisplay>();
-                int custoDaCarta = displayMao.cartaDados.custoSangue;
+                
+                // Pegamos os DOIS custos da carta
+                int custoSangue = displayMao.cartaDados.custoSangue;
+                int custoMana = displayMao.cartaDados.custoMana;
 
-                // NOVO: Verifica se temos sangue para pagar!
-                if (BattleManager.Instance.sangueAtual >= custoDaCarta)
+                // Verifica se temos recursos suficientes para os dois!
+                if (BattleManager.Instance.sangueAtual >= custoSangue && BattleManager.Instance.manaAtual >= custoMana)
                 {
-                    // Paga o custo
-                    BattleManager.Instance.GastarSangue(custoDaCarta);
+                    // Paga os custos
+                    if (custoSangue > 0) BattleManager.Instance.GastarSangue(custoSangue);
+                    if (custoMana > 0) BattleManager.Instance.GastarMana(custoMana);
 
-                    // A partir daqui, é o seu código original de invocação
+                    // Instancia a carta
                     Vector3 posicaoSpawn = hit.collider.transform.position + new Vector3(0, 0.1f, 0);
                     GameObject cartaNaMesa = Instantiate(prefabCartaMesa, posicaoSpawn, hit.collider.transform.rotation);
+                    
                     CardDisplay displayMesa = cartaNaMesa.GetComponentInChildren<CardDisplay>();
-
                     if (displayMao != null && displayMesa != null)
                     {
                         displayMesa.CarregarCarta(displayMao.cartaDados);
@@ -75,22 +85,19 @@ public class CardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                 }
                 else
                 {
-                    Debug.Log($"Sangue Insuficiente! Custa {custoDaCarta}, mas você tem {BattleManager.Instance.sangueAtual}");
-                    // Volta para a mão
+                    Debug.Log($"Recursos Insuficientes! Sangue: {BattleManager.Instance.sangueAtual}/{custoSangue} | Mana: {BattleManager.Instance.manaAtual}/{custoMana}");
                     rectTransform.position = posicaoInicial;
                     transform.SetParent(parentOriginal);
                 }
             }
             else
             {
-                // Slot ocupado ou inválido
                 rectTransform.position = posicaoInicial;
                 transform.SetParent(parentOriginal);
             }
         }
         else
         {
-            // Soltou fora do tabuleiro
             rectTransform.position = posicaoInicial;
             transform.SetParent(parentOriginal);
         }

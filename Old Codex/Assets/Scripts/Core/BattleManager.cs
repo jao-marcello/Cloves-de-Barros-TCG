@@ -1,16 +1,42 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; // Para a UI de Sangue
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
-    // Padrão Singleton para acesso fácil de outros scripts
     public static BattleManager Instance;
 
-    [Header("Recursos do Turno")]
+    [Header("Gerenciadores Conectados")]
+    public EnemyManager enemyManager;       
+    public GrimorioManager grimorioManager; 
+
+    [Header("Vida dos Jogadores")]
+    public int vidaJogador = 15;
+    public int vidaInimigo = 15;
+    public TextMeshProUGUI textoVidaJogadorUI;
+    public TextMeshProUGUI textoVidaInimigoUI;
+
+    [Header("Controle de Turnos")]
+    public bool turnoDoJogador = true;
+    public int turnoAtual = 1;
+    public bool jogoFinalizado = false; // Trava o jogo se alguém morrer
+
+    [Header("Navegação")]
+    public int indiceCenaMenu = 0;
+
+    [Header("Recursos do Jogador")]
     public int sangueAtual = 0;
     public bool modoSacrificioAtivo = false;
-    public TextMeshProUGUI textoSangueUI; // Arraste um texto da UI para cá
+    
+    public int manaAtual = 1;
+    public int manaMaxima = 1;
+    public int limiteMana = 5;
+
+    [Header("UI dos Recursos")]
+    public TextMeshProUGUI textoSangueUI;
+    public TextMeshProUGUI textoManaUI;
 
     [Header("Board Configuration")]
     public List<BoardSlot> playerSlots; 
@@ -18,127 +44,176 @@ public class BattleManager : MonoBehaviour
 
     void Awake()
     {
-        Instance = this; // Inicializa o Singleton
+        Instance = this;
     }
 
-    // --- FUNÇÕES DE RECURSOS ---
-    public void AdicionarSangue(int quantidade)
+    void Start()
     {
-        sangueAtual += quantidade;
         AtualizarUI();
     }
 
-    public void GastarSangue(int quantidade)
-    {
-        sangueAtual -= quantidade;
-        AtualizarUI();
-    }
+    // --- FUNÇÕES DE RECURSOS E VIDA ---
+    public void AdicionarSangue(int quantidade) { sangueAtual += quantidade; AtualizarUI(); }
+    public void GastarSangue(int quantidade) { sangueAtual -= quantidade; AtualizarUI(); }
+    public void GastarMana(int quantidade) { manaAtual -= quantidade; AtualizarUI(); }
+
+    public void ToggleModoSacrificio() { modoSacrificioAtivo = !modoSacrificioAtivo; }
 
     private void AtualizarUI()
     {
-        if (textoSangueUI != null)
+        if (textoSangueUI != null) textoSangueUI.text = "Blood: " + sangueAtual;
+        if (textoManaUI != null) textoManaUI.text = "Sanity: " + manaAtual + "/" + manaMaxima;
+        if (textoVidaJogadorUI != null) textoVidaJogadorUI.text = "Vida: " + vidaJogador;
+        if (textoVidaInimigoUI != null) textoVidaInimigoUI.text = "Vida Inimigo: " + vidaInimigo;
+    }
+
+    // --- SISTEMA DE DANO DIRETO E GAME OVER ---
+    public void CausarDanoAoInimigo(int dano)
+    {
+        vidaInimigo -= dano;
+        AtualizarUI();
+        Debug.Log($"Inimigo tomou {dano} de dano! Vida restante: {vidaInimigo}");
+        
+        if (vidaInimigo <= 0) FinalizarJogo(true);
+    }
+
+    public void CausarDanoAoJogador(int dano)
+    {
+        vidaJogador -= dano;
+        AtualizarUI();
+        Debug.Log($"Jogador tomou {dano} de dano! Vida restante: {vidaJogador}");
+        
+        if (vidaJogador <= 0) FinalizarJogo(false);
+    }
+
+    private void FinalizarJogo(bool jogadorVenceu)
+    {
+        jogoFinalizado = true;
+        if (jogadorVenceu)
         {
-            textoSangueUI.text = "Sangue: " + sangueAtual;
+            Debug.Log("🏆 VITÓRIA! O Horror Cósmico foi derrotado (por enquanto...)");
+        }
+        else
+        {
+            Debug.Log("💀 DERROTA! Sua mente sucumbiu à loucura...");
+        }
+
+        // Chama a rotina para esperar um pouco e voltar ao menu
+        StartCoroutine(TransitarParaMenu());
+    }
+
+    private IEnumerator TransitarParaMenu()
+    {
+        // Espera 3 segundos para o jogador ver o golpe final e ler o Console
+        yield return new WaitForSeconds(3f); 
+        
+        // Carrega a cena do Menu Principal
+        SceneManager.LoadScene(indiceCenaMenu);
+    }
+
+    // --- SISTEMA DE TURNOS ---
+    public void BotaoPassarTurno()
+    {
+        // Se o jogo acabou ou não for seu turno, o botão não faz nada
+        if (turnoDoJogador && !jogoFinalizado) 
+        {
+            StartCoroutine(RotinaDePassagemDeTurno());
         }
     }
 
-    // --- CONECTE ESTA FUNÇÃO AO SEU NOVO BOTÃO DE SACRIFÍCIO (A FACA) ---
-    public void ToggleModoSacrificio()
+    private IEnumerator RotinaDePassagemDeTurno()
     {
-        modoSacrificioAtivo = !modoSacrificioAtivo;
-        Debug.Log("Modo Sacrifício Ativo: " + modoSacrificioAtivo);
-        // Opcional: Aqui você pode mudar a cor do botão ou do cursor do mouse!
+        turnoDoJogador = false; 
+
+        // 1. Jogador ataca
+        TestPlayerCombat();
+        yield return new WaitForSeconds(1.5f); 
+        if (jogoFinalizado) yield break; // Para a corrotina se o inimigo morreu aqui
+
+        // 2. Inimigo ataca
+        TestEnemyCombat();
+        yield return new WaitForSeconds(1.5f); 
+        if (jogoFinalizado) yield break; // Para a corrotina se o jogador morreu aqui
+
+        // 3. Inimigo joga carta
+        if (enemyManager != null) enemyManager.PlayRandomCard();
+        yield return new WaitForSeconds(1f); 
+
+        IniciarNovoTurnoJogador();
     }
 
+    private void IniciarNovoTurnoJogador()
+    {
+        turnoAtual++;
+        turnoDoJogador = true;
+
+        if (manaMaxima < limiteMana) manaMaxima++;
+        manaAtual = manaMaxima;
+
+        if (grimorioManager != null) grimorioManager.ResetarCompraDoTurno();
+
+        AtualizarUI();
+    }
+
+    // --- COMBATE ---
     public void TestPlayerCombat()
     {
-        Debug.Log("--- INICIANDO FASE DE COMBATE DO JOGADOR ---");
-
-        if (playerSlots.Count == 0)
-        {
-            Debug.LogError("ERRO: A lista Player Slots no BattleManager está vazia!");
-            return;
-        }
+        if (playerSlots.Count == 0) return;
 
         for (int i = 0; i < playerSlots.Count; i++)
         {
             BoardSlot pSlot = playerSlots[i];
             BoardSlot eSlot = enemySlots[i];
 
-            Debug.Log($"Analisando Slot do Jogador {i} ({pSlot.gameObject.name}). Está ocupado? {pSlot.isOccupied}");
-
             if (pSlot.isOccupied && pSlot.cardInSlot != null)
             {
                 CardBattler attacker = pSlot.cardInSlot.GetComponentInChildren<CardBattler>();
-                
-                if (attacker != null)
+                if (attacker != null && attacker.baseData != null)
                 {
-                    Debug.Log($"Carta {attacker.baseData.name} pronta para atacar do slot {i}!");
-
                     if (eSlot.isOccupied && eSlot.cardInSlot != null)
                     {
                         CardBattler defender = eSlot.cardInSlot.GetComponentInChildren<CardBattler>();
-                        
                         if (defender != null)
                         {
-                            Debug.Log($"{attacker.baseData.name} ataca {defender.baseData.name}!");
                             defender.TakeDamage(attacker.currentAttack);
-                        }
-                        else
-                        {
-                            Debug.LogError($"O slot inimigo {i} tem uma carta, mas ela não tem o script CardBattler!");
                         }
                     }
                     else
                     {
-                        Debug.Log($"{attacker.baseData.name} ataca o Inimigo DIRETAMENTE! (Dano: {attacker.currentAttack})");
+                        // NOVO: Aplica o dano direto na vida do inimigo!
+                        CausarDanoAoInimigo(attacker.currentAttack); 
                     }
-                }
-                else
-                {
-                    Debug.LogError($"ERRO: A carta no slot {i} não possui o script CardBattler anexado nela!");
                 }
             }
         }
     }
 
-    // Método para testar o ataque do inimigo
     public void TestEnemyCombat()
     {
-        Debug.Log("--- INICIANDO FASE DE COMBATE DO INIMIGO ---");
-
         if (enemySlots.Count == 0) return;
 
-        // Passa por todos os slots do inimigo
         for (int i = 0; i < enemySlots.Count; i++)
         {
             BoardSlot eSlot = enemySlots[i];
-            BoardSlot pSlot = playerSlots[i]; // Pega o slot do jogador exatamente em frente
+            BoardSlot pSlot = playerSlots[i]; 
 
-            // Verifica se o INIMIGO tem uma carta neste slot
             if (eSlot.isOccupied && eSlot.cardInSlot != null)
             {
                 CardBattler attacker = eSlot.cardInSlot.GetComponentInChildren<CardBattler>();
-                
-                if (attacker != null)
+                if (attacker != null && attacker.baseData != null)
                 {
-                    Debug.Log($"Carta inimiga {attacker.baseData.name} pronta para atacar do slot {i}!");
-
-                    // Verifica se TEM um jogador na frente para receber o golpe
                     if (pSlot.isOccupied && pSlot.cardInSlot != null)
                     {
                         CardBattler defender = pSlot.cardInSlot.GetComponentInChildren<CardBattler>();
-                        
                         if (defender != null)
                         {
-                            Debug.Log($"{attacker.baseData.name} (Inimigo) ataca {defender.baseData.name} (Jogador)!");
                             defender.TakeDamage(attacker.currentAttack);
                         }
                     }
                     else
                     {
-                        // Não tem carta do jogador na frente. Atacará a Vida do Jogador!
-                        Debug.Log($"{attacker.baseData.name} ataca o JOGADOR DIRETAMENTE! (Dano: {attacker.currentAttack})");
+                        // NOVO: Aplica o dano direto na vida do jogador!
+                        CausarDanoAoJogador(attacker.currentAttack); 
                     }
                 }
             }

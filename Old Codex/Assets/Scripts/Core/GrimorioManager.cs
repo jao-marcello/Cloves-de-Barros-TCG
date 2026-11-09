@@ -24,6 +24,9 @@ public class GrimorioManager : MonoBehaviour
     public TextMeshProUGUI contadorDeckPrincipalText;
     public TextMeshProUGUI contadorDeckSacrificioText;
 
+    [Header("Controle de Turno")]
+    public bool jaComprouNesteTurno = false;
+
     void Start()
     {
         // Ao iniciar a batalha, puxa os dados do menu
@@ -46,7 +49,7 @@ public class GrimorioManager : MonoBehaviour
             deckDeBatalha.Add(carta);
         }
         EmbaralharDeck(deckDeBatalha); 
-        
+
         GarantirCartaCustoUmNoTopo();
 
         // 2. Prepara o Baralho de Sacrifício
@@ -64,6 +67,7 @@ public class GrimorioManager : MonoBehaviour
         // Compra a mão inicial (Apenas do principal. Sacrifícios o jogador decide puxar depois)
         ComprarCartasIniciais(3); 
         ComprarCartaSacrificio(); // Puxa a primeira carta de sacrifício automaticamente
+        jaComprouNesteTurno = false;
         
         Debug.Log($"Campanha iniciada com o Grimório: {deckEscolhido.name}");
     }
@@ -130,12 +134,20 @@ public class GrimorioManager : MonoBehaviour
     // --- CONECTE ESTA FUNÇÃO NO BOTÃO DE COMPRAR CARTA DO DECK PRINCIPAL ---
     public void ComprarCartaPrincipal()
     {
+        if (jaComprouNesteTurno)
+        {
+            Debug.Log("Você já comprou uma carta neste turno! Escolha com sabedoria no próximo.");
+            return;
+        }
+
         if (deckDeBatalha.Count > 0)
         {
             CartaSO cartaComprada = deckDeBatalha[0];
             deckDeBatalha.RemoveAt(0);
             AdicionarNaMao(cartaComprada);
             AtualizarContadoresUI();
+            
+            jaComprouNesteTurno = true; // Trava novas compras
         }
         else
         {
@@ -143,15 +155,22 @@ public class GrimorioManager : MonoBehaviour
         }
     }
 
-    // --- CONECTE ESTA FUNÇÃO NO BOTÃO DE COMPRAR CARTA DE SACRIFÍCIO ---
     public void ComprarCartaSacrificio()
     {
+        if (jaComprouNesteTurno)
+        {
+            Debug.Log("Você já comprou uma carta neste turno! Escolha com sabedoria no próximo.");
+            return;
+        }
+
         if (baralhoSacrificioAtual.Count > 0)
         {
             CartaSO cartaComprada = baralhoSacrificioAtual[0];
             baralhoSacrificioAtual.RemoveAt(0);
             AdicionarNaMao(cartaComprada);
             AtualizarContadoresUI();
+            
+            jaComprouNesteTurno = true; // Trava novas compras
         }
         else
         {
@@ -175,5 +194,10 @@ public class GrimorioManager : MonoBehaviour
     public void JogarCartaDaMao(CartaSO cartaJogada)
     {
         maoAtual.Remove(cartaJogada);
+    }
+
+    public void ResetarCompraDoTurno()
+    {
+        jaComprouNesteTurno = false;
     }
 }

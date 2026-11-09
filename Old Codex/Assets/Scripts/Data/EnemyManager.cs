@@ -33,6 +33,8 @@ public class EnemyManager : MonoBehaviour
             currentDeck = new List<CartaSO>(enemyClass.classCards);
         }
         AtualizarContadorUI();
+
+        PlayRandomCard();
     }
 
     // Função chamada para o inimigo jogar uma carta aleatória
